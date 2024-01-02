@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import Task from "./Task";
 import { Droppable } from "react-beautiful-dnd";
@@ -7,7 +6,8 @@ const Container = styled.div`
   background-color: #f4f5f7;
   border-radius: 2.5px;
   width: 300px;
-  height: 475px;
+  height: 120.5rem;
+  min-height: 12.5rem;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -22,7 +22,7 @@ const Title = styled.h3`
 
 const TaskList = styled.div`
   padding: 3px;
-  transistion: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
   background-color: #f4f5f7;
   flex-grow: 1;
   min-height: 100px;
@@ -34,18 +34,13 @@ export default function Column({ title, tasks, id }) {
       <Title
         style={{
           backgroundColor: "lightblue",
-          position: "sticky",
         }}
       >
         {title}
       </Title>
       <Droppable droppableId={id}>
-        {(provided, snapshot) => (
-          <TaskList
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-            isDraggingOver={snapshot.isDraggingOver}
-          >
+        {(provided) => (
+          <TaskList ref={provided.innerRef} {...provided.droppableProps}>
             {tasks.map((task, index) => (
               <Task key={index} index={index} task={task} />
             ))}
