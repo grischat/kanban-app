@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import { Formik, Field, FieldArray, Form } from "formik";
+import { useDispatch } from "react-redux";
 import "../CreateColumnModal/CreateColumnModal.scss";
 const style = {
   position: "absolute",
@@ -18,19 +19,17 @@ const style = {
 
 function CreateColumnModal() {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-
-  const [board, setBoard] = useState({})
-  console.log(board)
 
   return (
     <>
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <h2>Add New Board</h2>
+          <h2 className="header__modal">Add New Board</h2>
           <Formik
             initialValues={{
               boardName: "",
@@ -39,19 +38,16 @@ function CreateColumnModal() {
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
 
+              dispatch({ type: "addBoard", payload: values });
+
+              handleClose();
               
-              setBoard(values)
-              handleClose()
             }}
           >
             {({ values }) => (
               <Form className="create-column__modal">
                 <label htmlFor="boardName">Board Name</label>
-                <Field
-                  id="boardName"
-                  name="boardName"
-                  placeholder="e.g Work"
-                />
+                <Field id="boardName" name="boardName" placeholder="e.g Work" />
 
                 <FieldArray name="columns">
                   {({ push, remove }) => (

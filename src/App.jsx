@@ -1,10 +1,13 @@
-import KanbanBoard from "./components/KanbanBoard";
-import CreateColumnModal from "./components/CreateColumnModal/CreateColumnModal";
+import KanbanBoard from "./components/KanbanBoard/KanbanBoard";
+
+import Header from "./components/Header/Header";
+
 function App() {
   return (
     <>
-      <CreateColumnModal />
-      <KanbanBoard></KanbanBoard>
+      <Header></Header>
+      
+      <KanbanBoard />
     </>
   );
 }
