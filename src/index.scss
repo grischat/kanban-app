@@ -4,7 +4,6 @@ $backgroundColorLight: #e4ebfa;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -13,4 +12,11 @@ $backgroundColorLight: #e4ebfa;
 * {
   margin: 0 auto;
   box-sizing: border-box;
+}
+label {
+  color: #828fa3;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }

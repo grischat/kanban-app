@@ -1,7 +1,51 @@
-.create-column__modal {
-  display: flex;
-  flex-direction: column;
-}
-.header__modal {
-  color: black;
+.container__modal {
+  border-radius: 0.375rem;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  padding: 2rem;
+  .create-column__modal {
+    display: flex;
+    flex-direction: column;
+  }
+  .header__modal {
+    color: black;
+    margin-bottom: 1rem;
+  }
+  #boardName__label {
+    margin-left: 0;
+  }
+  #boardColumns__label {
+    margin: 0;
+  }
+  #boardName {
+    margin: 1rem 1rem 1rem 0;
+    width: 16.4375rem;
+    height: 2.5rem;
+    padding-left: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(130, 143, 163, 0.25);
+  }
+  .columns__container {
+    margin-left: 0;
+    #btn-delete {
+        position: relative;
+        top: 0.2rem;
+        left: 0.5rem;
+        background-color: transparent;
+        border: none;
+    }
+  }
+  .create-board__field {
+    margin-left: 0;
+    width: 13.4375rem;
+    height: 2.5rem;
+    padding-left: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(130, 143, 163, 0.25);
+    margin-top: 0.5rem;
+  }
 }

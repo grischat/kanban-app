@@ -1,22 +1,14 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
+import AddBtn from "../Buttons/AddBtn/AddBtn";
+import SubmitBtn from "../Buttons/BtnSubmit/SubmitBtn";
 import { useState } from "react";
 import { Formik, Field, FieldArray, Form } from "formik";
 import { useDispatch } from "react-redux";
 import "../CreateColumnModal/CreateColumnModal.scss";
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
+import boardIcon from "../../assets/icon-plus.svg";
+import crossIcon from "../../assets/icon-cross.svg";
 function CreateColumnModal() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -26,9 +18,11 @@ function CreateColumnModal() {
 
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>
+        <img src={boardIcon}></img>
+      </Button>
       <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
+        <Box className="container__modal">
           <h2 className="header__modal">Add New Board</h2>
           <Formik
             initialValues={{
@@ -41,36 +35,53 @@ function CreateColumnModal() {
               dispatch({ type: "addBoard", payload: values });
 
               handleClose();
-              
             }}
           >
             {({ values }) => (
               <Form className="create-column__modal">
-                <label htmlFor="boardName">Board Name</label>
-                <Field id="boardName" name="boardName" placeholder="e.g Work" />
+                <label id="boardName__label" htmlFor="boardName">
+                  Board Name
+                </label>
+                <Field
+                  id="boardName"
+                  className="create-board__field"
+                  name="boardName"
+                  placeholder="e.g Work"
+                />
 
                 <FieldArray name="columns">
                   {({ push, remove }) => (
-                    <div>
+                    <div className="columns__container">
+                      <label id="boardColumns__label" htmlFor="columns">
+                        Columns
+                      </label>
                       {values.columns.map((column, index) => (
                         <div key={index}>
                           <Field
+                            className="create-board__field"
                             name={`columns.${index}`}
                             placeholder={`Column Name ${index + 1}`}
                           />
-                          <button type="button" onClick={() => remove(index)}>
-                            Remove
+
+                          <button
+                            id="btn-delete"
+                            type="button"
+                            onClick={() => remove(index)}
+                          >
+                            <img src={crossIcon} alt="Delete cross icon"></img>
                           </button>
                         </div>
                       ))}
-                      <button type="button" onClick={() => push("")}>
-                        Add Column
-                      </button>
+
+                      <AddBtn
+                        btnText={"+ Add New Column"}
+                        onClick={() => push("")}
+                      />
                     </div>
                   )}
                 </FieldArray>
 
-                <button type="submit">Submit</button>
+                <SubmitBtn btnText={"Create New Board"} />
               </Form>
             )}
           </Formik>
