@@ -1,4 +1,4 @@
-import '../BtnSubmit/SubmitBtn.scss'
+import '../SubmitBtn/SubmitBtn.scss'
 
 export default function SubmitBtn({onClick, btnText}) {
   return (

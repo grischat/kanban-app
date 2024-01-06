@@ -1,0 +1,16 @@
+.emptyBoard__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .emptyBoard__text {
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    color: #828fa3;
+  }
+}
