@@ -6,14 +6,13 @@ import "./App.scss";
 function App() {
   const theme = useSelector((state) => state.switchThemeReducer.theme);
   const boardColumns = useSelector(
-    (state) => state.createColumnsReducer.columns
+    (state) => state.createColumnsReducer.currentBoard.columns
   );
   const noColumns =
     boardColumns.length === 0 ||
     boardColumns === null ||
     boardColumns === undefined;
 
-  console.log(noColumns);
   return (
     <div className={`app__container-${theme}`}>
       <Header></Header>

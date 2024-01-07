@@ -11,7 +11,7 @@ export default function KanbanBoard() {
   return (
     <DragDropContext>
       <h2 style={{ textAlign: "start" }}>
-        {boardData.boardName ? boardData.boardName : ""}
+        {boardData.currentBoard.boardName ? boardData.currentBoard.boardName : ""}
       </h2>
       <div
         style={{
@@ -23,8 +23,8 @@ export default function KanbanBoard() {
           height: "auto",
         }}
       >
-        {boardData.columns !== undefined
-          ? boardData.columns.map((column, index) => (
+        {boardData.currentBoard.columns !== undefined
+          ? boardData.currentBoard.columns.map((column, index) => (
               <Column key={index} title={column} id={index} tasks={[]} />
             ))
           : null}

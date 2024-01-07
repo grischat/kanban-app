@@ -29,7 +29,6 @@ export default function CreateColumnModal() {
           <h2 className="header__modal">Add New Columns</h2>
           <Formik
             initialValues={{
-              boardName: "",
               columns: [""],
             }}
             onSubmit={async (values) => {

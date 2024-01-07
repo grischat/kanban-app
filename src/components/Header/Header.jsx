@@ -17,7 +17,7 @@ export default function Header() {
     >
       <img id="header__logo" src={logo} alt="App logo" />
       <h2 id="header__boardName-selected">
-        {boardData !== undefined ? boardData.boardName : ""}
+        {boardData !== undefined ? boardData.currentBoard.boardName : ""}
       </h2>
       
       <CreateBoardModal />
