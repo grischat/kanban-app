@@ -8,15 +8,12 @@ function App() {
   const boardColumns = useSelector(
     (state) => state.createColumnsReducer.currentBoard.columns
   );
-  const noColumns =
-    boardColumns.length === 0 ||
-    boardColumns === null ||
-    boardColumns === undefined;
+  const noColumns = boardColumns === null || boardColumns === undefined || boardColumns.length === 0;
 
   return (
     <div className={`app__container-${theme}`}>
       <Header></Header>
-
+    
       {noColumns ? <EmptyBoard /> : <KanbanBoard />}
     </div>
   );

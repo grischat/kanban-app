@@ -40,13 +40,14 @@ function CreateBoardModal() {
             {({ values }) => (
               <Form className="create-column__modal">
                 <label id="boardName__label" htmlFor="boardName">
-                  Board Name
+                  Board Name*
                 </label>
                 <Field
                   id="boardName"
                   className="create-board__field"
                   name="boardName"
                   placeholder='e.g Work'
+                  required 
                 />
 
                 <FieldArray name="columns">

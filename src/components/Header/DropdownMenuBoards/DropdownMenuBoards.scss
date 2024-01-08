@@ -1,0 +1,48 @@
+.boardsMenu__btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+}
+.boardsMenu-light {
+  background-color: #fff;
+  padding: 0;
+  border-radius: 0.5rem;
+  width: 16.5rem;
+  padding: 1rem;
+  color: black;
+  max-height: 300px;
+  overflow-y: auto;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  .boardsMenu__item {
+    cursor: pointer;
+    list-style-type: none;
+    text-align: start;
+    margin: 1.5rem;
+  }
+}
+.boardsMenu-dark {
+  background-color: #2b2c37;
+  position: absolute;
+  padding: 0;
+  border-radius: 0.5rem;
+  width: 16.5rem;
+  padding: 1rem;
+  color: #fff;
+  max-height: 300px;
+  overflow-y: auto;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  .boardsMenu__item {
+    cursor: pointer;
+    list-style-type: none;
+    text-align: start;
+    margin: 1.5rem;
+  }
+}

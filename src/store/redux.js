@@ -3,12 +3,11 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 const initialState = {
   currentBoard: { boardName: null, columns: null },
-  allBoards: [], // New array to store all created boards
+  allBoards: [],
 };
 
 const createColumnsReducer = (state = initialState, action) => {
   if (action.type === "addBoard") {
-    
     const newBoard = {
       boardName: action.payload.boardName,
       columns: [...action.payload.columns],
@@ -26,7 +25,7 @@ const createColumnsReducer = (state = initialState, action) => {
       currentBoard: {
         ...state.currentBoard,
         columns: [...state.currentBoard.columns, ...action.payload.columns],
-      },
+      }, // For the first we are updating current board locally
       allBoards: state.allBoards.map((board) =>
         board.boardName === state.currentBoard.boardName
           ? {
@@ -34,7 +33,18 @@ const createColumnsReducer = (state = initialState, action) => {
               columns: [...board.columns, ...action.payload.columns],
             }
           : board
-      ),
+      ), //Update an updated column of the current picked board in ALL boards store
+    };
+  }
+  if (action.type === "selectBoard") {
+    const selectedBoard = {
+      boardName: action.payload.boardName,
+      columns: [...action.payload.columns],
+    };
+    return {
+      ...state,
+      currentBoard: selectedBoard,
+      allBoards: [...state.allBoards],
     };
   }
   return state;
@@ -61,3 +71,6 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = createStore(persistedReducer);
 export const persistor = persistStore(store);
+export const clearPersistedState = () => {
+  persistor.purge();
+};

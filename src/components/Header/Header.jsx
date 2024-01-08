@@ -1,5 +1,7 @@
 import logo from "../../assets/logo-mobile.svg";
 import CreateBoardModal from "../CreateBoardModal/CreateBoardModal";
+import DropdownMenuBoards from "./DropdownMenuBoards/DropdownMenuBoards";
+
 import { useSelector } from "react-redux";
 
 import "../Header/Header.scss";
@@ -19,6 +21,7 @@ export default function Header() {
       <h2 id="header__boardName-selected">
         {boardData !== undefined ? boardData.currentBoard.boardName : ""}
       </h2>
+      <DropdownMenuBoards/>
       
       <CreateBoardModal />
     </div>

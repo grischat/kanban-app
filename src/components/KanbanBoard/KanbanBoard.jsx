@@ -1,18 +1,20 @@
+
 import { DragDropContext } from "react-beautiful-dnd";
 import { useSelector } from "react-redux";
 import Column from "../Column/Column";
 
 export default function KanbanBoard() {
-  
   const boardData = useSelector((state) => state.createColumnsReducer);
-  if (!boardData || !boardData.columns) {
+
+  if (!boardData || !boardData.currentBoard || !boardData.currentBoard.columns) {
     return null;
   }
+
+  const { boardName, columns } = boardData.currentBoard;
+
   return (
     <DragDropContext>
-      <h2 style={{ textAlign: "start" }}>
-        {boardData.currentBoard.boardName ? boardData.currentBoard.boardName : ""}
-      </h2>
+      <h2 style={{ textAlign: "start" }}>{boardName}</h2>
       <div
         style={{
           display: "flex",
@@ -23,11 +25,9 @@ export default function KanbanBoard() {
           height: "auto",
         }}
       >
-        {boardData.currentBoard.columns !== undefined
-          ? boardData.currentBoard.columns.map((column, index) => (
-              <Column key={index} title={column} id={index} tasks={[]} />
-            ))
-          : null}
+        {columns.map((column, index) => (
+          <Column key={index} title={column} id={index} tasks={[]} />
+        ))}
       </div>
     </DragDropContext>
   );
