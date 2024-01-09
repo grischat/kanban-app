@@ -1,48 +1,121 @@
-.boardsMenu__btn {
-  background-color: transparent;
-  border: none;
+// Common styles
+.boardsMenu__item,
+.boardsMenu__item-selected {
   cursor: pointer;
-  width: 2rem;
-  height: 2rem;
+  list-style-type: none;
+  text-align: start;
+  margin: 1.5rem;
+  margin-left: 0.4rem;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  #boardIcon {
+    margin-right: 1rem;
+  }
 }
+
+// Light theme
 .boardsMenu-light {
   background-color: #fff;
-  padding: 0;
   border-radius: 0.5rem;
   width: 16.5rem;
-  padding: 1rem;
+  padding: 0.5rem;
   color: black;
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
-  transform: translate(-50%, -50%) !important;
+  transform: translate(-50%, -60%) !important;
+
+  .boardsCounter__paragraph {
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.15rem;
+    color: #828fa3;
+  }
+
   .boardsMenu__item {
-    cursor: pointer;
-    list-style-type: none;
-    text-align: start;
-    margin: 1.5rem;
+    color: #828fa3;
+  }
+
+  .boardsMenu__item-selected {
+    color: #fff;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 70rem;
+      height: 3rem;
+      border-radius: 0rem 6.25rem 6.25rem 0rem;
+      text-align: center;
+      background-color: #635fc7;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-90%, -50%);
+    }
   }
 }
+
+
+
+// Dark theme
 .boardsMenu-dark {
   background-color: #2b2c37;
   position: absolute;
-  padding: 0;
   border-radius: 0.5rem;
   width: 16.5rem;
-  padding: 1rem;
+  padding: 0.5rem;
   color: #fff;
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  .boardsMenu__item {
-    cursor: pointer;
-    list-style-type: none;
-    text-align: start;
-    margin: 1.5rem;
+  transform: translate(-50%, -60%) !important;
+
+  .boardsCounter__paragraph {
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.15rem;
+    color: #828fa3;
   }
+
+  .boardsMenu__item {
+    color: #828fa3;
+  }
+
+  .boardsMenu__item-selected {
+    color: #fff;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 70rem;
+      height: 3rem;
+      border-radius: 0rem 6.25rem 6.25rem 0rem;
+      text-align: center;
+      background-color: #635fc7;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-90%, -50%);
+    }
+  }
+}
+.boardsMenu__btn {
+  background-color: transparent;
+  border: none;
+}
+.MuiMenu-listbox {
+  padding: 1rem;
 }

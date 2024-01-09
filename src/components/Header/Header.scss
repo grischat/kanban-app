@@ -5,6 +5,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .header__boardList {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+  }
   #header__logo {
     margin: 1.25rem;
   }

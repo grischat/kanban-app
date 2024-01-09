@@ -1,0 +1,40 @@
+.themeBtn__container-light,
+.themeBtn__container-dark {
+  width: 14.6875rem;
+  height: 3rem;
+  background-color: #f4f7fd;
+  margin-left: -0.5rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  display: flex;
+  .themeBtn__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .themeBtn__logo {
+    position: relative;
+    top: 1rem;
+    height: 1rem;
+  }
+}
+.themeBtn__container-dark {
+  background-color: #20212c;
+}
+.MuiSwitch-root {
+  height: auto !important;
+  width: 4.1rem !important;
+}
+.MuiButtonBase-root {
+  top: 5.5px !important;
+  width: 2.8rem !important;
+}
+.MuiSwitch-thumb {
+  color: #fff !important;
+  width: 19px !important;
+  height: 19px !important;
+}
+.MuiSwitch-track {
+  background-color: #635fc7 !important;
+  border-radius: 16px !important;
+  opacity: 1 !important;
+}

@@ -50,10 +50,14 @@ const createColumnsReducer = (state = initialState, action) => {
   return state;
 };
 
-const switchThemeReducer = (state = { theme: "dark" }, action) => {
+const switchThemeReducer = (
+  state = { theme: "light", toggled: false },
+  action
+) => {
   if (action.type === "switchTheme") {
     return {
       theme: action.payload.theme,
+      toggled: action.payload.toggled,
     };
   }
   return state;

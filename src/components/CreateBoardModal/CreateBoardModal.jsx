@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import React from "react";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import AddColumnBtn from "../Buttons/AddColumnBtn/AddColumnBtn";
@@ -7,7 +8,7 @@ import { useState } from "react";
 import { Formik, Field, FieldArray, Form } from "formik";
 import { useDispatch } from "react-redux";
 import "./CreateBoardModal.scss";
-import boardIcon from "../../assets/icon-plus.svg";
+import boardIcon from "../../assets/icon-board-purple.svg";
 import crossIcon from "../../assets/icon-cross.svg";
 function CreateBoardModal() {
   const [open, setOpen] = useState(false);
@@ -16,13 +17,16 @@ function CreateBoardModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   
+  
   return (
     <>
-      <Button onClick={handleOpen}>
-        <img src={boardIcon}></img>
+      <Button className="btn" onClick={handleOpen}>
+        <img src={boardIcon}/>
+        <p  className="btn__text">+ Create New Board</p>
       </Button>
-      <Modal open={open} onClose={handleClose}>
-        <Box className="container__modal">
+      <Modal open={open} onClose={handleClose} >
+      
+        <Box className="container__modal"  >
           <h2 className="header__modal">Add New Board</h2>
           <Formik
             initialValues={{
@@ -88,6 +92,7 @@ function CreateBoardModal() {
             )}
           </Formik>
         </Box>
+        
       </Modal>
     </>
   );

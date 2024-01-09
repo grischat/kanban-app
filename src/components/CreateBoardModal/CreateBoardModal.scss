@@ -1,3 +1,16 @@
+.btn {
+  width: 13rem !important;
+  margin-left: -1rem !important;
+  .btn__text {
+    margin-top: 0.1rem;
+    margin-left: 0;
+    color: #635FC7;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: none;
+  }
+}
 .container__modal {
   border-radius: 0.375rem;
   background-color: #fff;
@@ -7,6 +20,7 @@
   transform: translate(-50%, -50%);
   width: 20rem;
   padding: 2rem;
+
   .create-column__modal {
     display: flex;
     flex-direction: column;
@@ -32,11 +46,11 @@
   .columns__container {
     margin-left: 0;
     #btn-delete {
-        position: relative;
-        top: 0.2rem;
-        left: 0.5rem;
-        background-color: transparent;
-        border: none;
+      position: relative;
+      top: 0.2rem;
+      left: 0.5rem;
+      background-color: transparent;
+      border: none;
     }
   }
   .create-board__field {
