@@ -1,46 +1,58 @@
 import Box from "@mui/material/Box";
+import React from "react";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import AddColumnBtn from "../Buttons/AddColumnBtn/AddColumnBtn";
 import SubmitBtn from "../Buttons/SubmitBtn/SubmitBtn";
 import { useState } from "react";
 import { Formik, Field, FieldArray, Form } from "formik";
-import { useDispatch } from "react-redux";
-import "./CreateColumnModal.scss";
+import { useDispatch, useSelector } from "react-redux";
 import crossIcon from "../../assets/icon-cross.svg";
-export default function CreateColumnModal() {
+import './EditBoardModal.scss'
+function EditBoardModal() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const currentBoard = useSelector(
+    (state) => state.createColumnsReducer.currentBoard
+  );
+  
   return (
     <>
-      <Button className="button-addColumn">
-        <AddColumnBtn
-          className="button-addColumn__emptyBoard"
-          btnText="+ Add New Column"
-          onClick={handleOpen}
-        />
+      <Button className="editBtn__container" onClick={handleOpen}>
+        <p className="editBtn">Edit</p>
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Box className="container__modal">
-          <h2 className="header__modal">Add New Columns</h2>
+          <h2 className="header__modal">Edit Board</h2>
           <Formik
             initialValues={{
-              columns: [""],
+              boardName: currentBoard.boardName,
+              columns: currentBoard.columns || [""],
             }}
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
 
-              dispatch({ type: "addColumn", payload: values });
+              dispatch({ type: "editBoard", payload: values });
+              
 
               handleClose();
             }}
           >
             {({ values }) => (
               <Form className="create-column__modal">
+                <label id="boardName__label" htmlFor="boardName">
+                  Board Name*
+                </label>
+                <Field
+                  id="boardName"
+                  className="create-board__field"
+                  name="boardName"
+                  required
+                ></Field>
+
                 <FieldArray name="columns">
                   {({ push, remove }) => (
                     <div className="columns__container">
@@ -74,7 +86,7 @@ export default function CreateColumnModal() {
                   )}
                 </FieldArray>
 
-                <SubmitBtn btnText="Create New Columns" />
+                <SubmitBtn btnText={"Edit Board"} />
               </Form>
             )}
           </Formik>
@@ -83,3 +95,5 @@ export default function CreateColumnModal() {
     </>
   );
 }
+
+export default EditBoardModal;

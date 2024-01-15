@@ -2,7 +2,7 @@ import { createStore, combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 const initialState = {
-  currentBoard: { boardName: null, columns: null },
+  currentBoard: { boardName: "Dummy", columns: null },
   allBoards: [],
 };
 
@@ -19,6 +19,48 @@ const createColumnsReducer = (state = initialState, action) => {
       allBoards: [...state.allBoards, newBoard], // Add the new board to the array
     };
   }
+
+  if (action.type === "editBoard") {
+    const editedCurrentBoard = {
+      boardName: action.payload.boardName,
+      columns: [...action.payload.columns],
+    };
+    const updatedAllBoards = state.allBoards.map((board, index) =>
+      index ===
+      state.allBoards.findIndex(
+        (b) => b.boardName === state.currentBoard.boardName
+      )
+        ? editedCurrentBoard
+        : board
+    );
+
+    return {
+      ...state,
+      currentBoard: editedCurrentBoard,
+      allBoards: updatedAllBoards,
+    };
+  }
+
+  if (action.type === "deleteBoard") {
+    const selectedBoard = {
+      boardName: action.payload.boardName,
+      columns: [...action.payload.columns],
+    };
+
+    const updatedBoards = state.allBoards.filter(
+      (board) =>
+        board.boardName !== selectedBoard.boardName && board.boardName !== null
+    );
+
+    const isBoardExisting = updatedBoards.length > 0 ? updatedBoards[0] : null;
+
+    return {
+      ...state,
+      currentBoard: isBoardExisting,
+      allBoards: updatedBoards,
+    };
+  }
+
   if (action.type === "addColumn") {
     return {
       ...state,

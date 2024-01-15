@@ -28,7 +28,7 @@
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
-  transform: translate(-50%, -60%) !important;
+  transform: translate(-50%, -50%) !important;
 
   .boardsCounter__paragraph {
     font-size: 0.75rem;
@@ -78,7 +78,7 @@
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
-  transform: translate(-50%, -60%) !important;
+  transform: translate(-50%, -50%) !important;
 
   .boardsCounter__paragraph {
     font-size: 0.75rem;
@@ -115,6 +115,8 @@
 .boardsMenu__btn {
   background-color: transparent;
   border: none;
+  margin-left: 0;
+  padding: 0 !important;
 }
 .MuiMenu-listbox {
   padding: 1rem;
