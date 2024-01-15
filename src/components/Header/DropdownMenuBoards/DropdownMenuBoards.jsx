@@ -8,8 +8,9 @@ import ThemeBtn from "../../Buttons/ThemeBtn/ThemeBtn";
 import dropdownIconDown from "../../../assets/icon-chevron-down.svg";
 import dropdownIconUp from "../../../assets/icon-chevron-up.svg";
 import boardIcon from "../../../assets/icon-board.svg";
+import boardIconPurple from "../../../assets/icon-board-purple.svg";
 import "./DropdownMenuBoards.scss";
-import CreateBoardModal from "../../CreateBoardModal/CreateBoardModal";
+import BoardModal from "../../BoardModal/BoardModal";
 export default function DropdownMenuBoards() {
   const [open, setOpen] = useState(false);
   const handleOpenClose = () => setOpen(!open);
@@ -24,11 +25,12 @@ export default function DropdownMenuBoards() {
       payload: { boardName: board.boardName, columns: board.columns },
     });
   };
-  
+
   return (
-    <Dropdown open={open} >
+    <Dropdown open={open}>
       <MenuButton onClick={handleOpenClose} className="boardsMenu__btn">
         <img
+          className="boardsMenu__icon"
           src={open ? dropdownIconUp : dropdownIconDown}
           alt="dropdown icon button"
         />
@@ -36,7 +38,6 @@ export default function DropdownMenuBoards() {
       <Menu className={`boardsMenu-${theme}`}>
         <p className="boardsCounter__paragraph ">{`ALL BOARDS (${allBoards.length})`}</p>
         {allBoards.map((el, index) => (
-          
           <MenuItem
             onClick={() => {
               handleSelectedItem(el);
@@ -46,11 +47,21 @@ export default function DropdownMenuBoards() {
             className="boardsMenu__item"
             key={index}
           >
-            <img id="boardIcon" src={boardIcon}/>
+            <img id="boardIcon" src={boardIcon} />
             {el.boardName}
           </MenuItem>
         ))}
-        <CreateBoardModal />
+        <div className="createBoard__container">
+          <img id="boardIcon-purple" src={boardIconPurple} />
+          <BoardModal
+            mode="create"
+            initialValues={{
+              boardName: "",
+              columns: [""],
+            }}
+            buttonText={"+Create New Board"}
+          />
+        </div>
         <ThemeBtn />
       </Menu>
     </Dropdown>

@@ -15,7 +15,13 @@
     margin-right: 1rem;
   }
 }
-
+#boardIcon-purple {
+  position: relative;
+  top: 0.5rem;
+}
+.boardsMenu__icon {
+  cursor: pointer;
+}
 // Light theme
 .boardsMenu-light {
   background-color: #fff;
@@ -62,8 +68,6 @@
     }
   }
 }
-
-
 
 // Dark theme
 .boardsMenu-dark {
@@ -112,6 +116,7 @@
     }
   }
 }
+
 .boardsMenu__btn {
   background-color: transparent;
   border: none;

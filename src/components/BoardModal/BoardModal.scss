@@ -1,16 +1,3 @@
-.btn {
-  width: 13rem !important;
-  margin-left: -1rem !important;
-  .btn__text {
-    margin-top: 0.1rem;
-    margin-left: 0;
-    color: #635FC7;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    text-transform: none;
-  }
-}
 .container__modal {
   border-radius: 0.375rem;
   background-color: #fff;
@@ -25,16 +12,20 @@
     display: flex;
     flex-direction: column;
   }
+
   .header__modal {
     color: black;
     margin-bottom: 1rem;
   }
+
   #boardName__label {
     margin-left: 0;
   }
+
   #boardColumns__label {
     margin: 0;
   }
+
   #boardName {
     margin: 1rem 1rem 1rem 0;
     width: 16.4375rem;
@@ -43,8 +34,10 @@
     border-radius: 0.25rem;
     border: 1px solid rgba(130, 143, 163, 0.25);
   }
+
   .columns__container {
     margin-left: 0;
+
     #btn-delete {
       position: relative;
       top: 0.2rem;
@@ -53,6 +46,7 @@
       border: none;
     }
   }
+
   .create-board__field {
     margin-left: 0;
     width: 13.4375rem;
@@ -61,5 +55,39 @@
     border-radius: 0.25rem;
     border: 1px solid rgba(130, 143, 163, 0.25);
     margin-top: 0.5rem;
+  }
+}
+
+.btn-create {
+  width: 10rem !important;
+
+  .btn__text-create {
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: none;
+    line-height: 1.4375rem;
+    margin-top: 0.1rem;
+    margin-left: 0;
+    color: #635fc7;
+    
+  }
+}
+
+.btn-edit {
+  width: 10rem !important;
+  padding-left: 0.4rem !important;
+  padding-top: 0 !important;
+
+  .btn__text-edit {
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: none;
+    line-height: 1.4375rem;
+    margin-top: 0.1rem;
+    margin-left: 0;
+    color: #828fa3;
+    text-align: start;
   }
 }

@@ -1,42 +1,42 @@
-import Box from "@mui/material/Box";
-import React from "react";
-import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Formik, Field, FieldArray, Form } from "formik";
+import { Modal, Button } from "@mui/material";
 import AddColumnBtn from "../Buttons/AddColumnBtn/AddColumnBtn";
 import SubmitBtn from "../Buttons/SubmitBtn/SubmitBtn";
-import { useState } from "react";
-import { Formik, Field, FieldArray, Form } from "formik";
-import { useDispatch, useSelector } from "react-redux";
 import crossIcon from "../../assets/icon-cross.svg";
-import './EditBoardModal.scss'
-function EditBoardModal() {
+import "./BoardModal.scss";
+
+function BoardModal({ mode, buttonText, initialValues }) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const currentBoard = useSelector(
-    (state) => state.createColumnsReducer.currentBoard
-  );
-  
+
   return (
     <>
-      <Button className="editBtn__container" onClick={handleOpen}>
-        <p className="editBtn">Edit</p>
+      <Button
+        className={`btn-${mode}`}
+        onClick={handleOpen}
+      >
+        <p className={`btn__text-${mode}`}>{buttonText}</p>
       </Button>
       <Modal open={open} onClose={handleClose}>
-        <Box className="container__modal">
-          <h2 className="header__modal">Edit Board</h2>
+        <div className="container__modal">
+          <h2 className="header__modal">
+            {mode === "create" ? "Add New Board" : "Edit Board"}
+          </h2>
           <Formik
-            initialValues={{
-              boardName: currentBoard.boardName,
-              columns: currentBoard.columns || [""],
-            }}
+            initialValues={initialValues}
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
 
-              dispatch({ type: "editBoard", payload: values });
-              
+              if (mode === "create") {
+                dispatch({ type: "addBoard", payload: values });
+              } else {
+                dispatch({ type: "editBoard", payload: values });
+              }
 
               handleClose();
             }}
@@ -51,7 +51,7 @@ function EditBoardModal() {
                   className="create-board__field"
                   name="boardName"
                   required
-                ></Field>
+                />
 
                 <FieldArray name="columns">
                   {({ push, remove }) => (
@@ -86,14 +86,18 @@ function EditBoardModal() {
                   )}
                 </FieldArray>
 
-                <SubmitBtn btnText={"Edit Board"} />
+                <SubmitBtn
+                  btnText={
+                    mode === "create" ? "Create New Board" : "Edit Board"
+                  }
+                />
               </Form>
             )}
           </Formik>
-        </Box>
+        </div>
       </Modal>
     </>
   );
 }
 
-export default EditBoardModal;
+export default BoardModal;
