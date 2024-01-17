@@ -1,6 +1,7 @@
-.container__modal {
+// Base styles for .container__modal-light and .container__modal-dark
+.container__modal-light,
+.container__modal-dark {
   border-radius: 0.375rem;
-  background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -13,7 +14,7 @@
     flex-direction: column;
   }
 
-  .header__modal {
+  .header__modal-light {
     color: black;
     margin-bottom: 1rem;
   }
@@ -25,14 +26,20 @@
   #boardColumns__label {
     margin: 0;
   }
+}
 
-  #boardName {
+// Light mode styles
+.container__modal-light {
+  background-color: #fff;
+
+  #boardName-light {
     margin: 1rem 1rem 1rem 0;
     width: 16.4375rem;
     height: 2.5rem;
     padding-left: 1rem;
     border-radius: 0.25rem;
     border: 1px solid rgba(130, 143, 163, 0.25);
+    color: black;
   }
 
   .columns__container {
@@ -45,40 +52,69 @@
       background-color: transparent;
       border: none;
     }
-  }
 
-  .create-board__field {
-    margin-left: 0;
-    width: 13.4375rem;
+    .create-board__field-light {
+      margin-left: 0;
+      width: 13.4375rem;
+      height: 2.5rem;
+      padding-left: 1rem;
+      border-radius: 0.25rem;
+      border: 1px solid rgba(130, 143, 163, 0.25);
+      margin-top: 0.5rem;
+      color: black;
+    }
+  }
+}
+
+// Dark mode styles
+.container__modal-dark {
+  background-color: #2b2c37;
+
+  #boardName-dark {
+    margin: 1rem 1rem 1rem 0;
+    width: 16.4375rem;
     height: 2.5rem;
     padding-left: 1rem;
     border-radius: 0.25rem;
     border: 1px solid rgba(130, 143, 163, 0.25);
-    margin-top: 0.5rem;
+    background-color: transparent;
+    color: #fff;
   }
-}
-
-.btn-create {
-  width: 10rem !important;
-
-  .btn__text-create {
-    font-size: 0.8125rem;
-    font-style: normal;
-    font-weight: 600;
-    text-transform: none;
-    line-height: 1.4375rem;
-    margin-top: 0.1rem;
+  .header__modal-dark {
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .columns__container {
     margin-left: 0;
-    color: #635fc7;
-    
+
+    #btn-delete {
+      position: relative;
+      top: 0.2rem;
+      left: 0.5rem;
+      background-color: transparent;
+      border: none;
+    }
+
+    .create-board__field-dark {
+      margin-left: 0;
+      width: 13.4375rem;
+      height: 2.5rem;
+      padding-left: 1rem;
+      border-radius: 0.25rem;
+      border: 1px solid rgba(130, 143, 163, 0.25);
+      margin-top: 0.5rem;
+      background-color: transparent;
+      color: #fff;
+    }
   }
 }
 
+// Shared button styles
+.btn-create,
 .btn-edit {
   width: 10rem !important;
-  padding-left: 0.4rem !important;
-  padding-top: 0 !important;
 
+  .btn__text-create,
   .btn__text-edit {
     font-size: 0.8125rem;
     font-style: normal;
@@ -87,6 +123,21 @@
     line-height: 1.4375rem;
     margin-top: 0.1rem;
     margin-left: 0;
+  }
+}
+
+// Button specific styles
+.btn-create {
+  .btn__text-create {
+    color: #635fc7;
+  }
+}
+
+.btn-edit {
+  padding-left: 0.4rem !important;
+  padding-top: 0 !important;
+
+  .btn__text-edit {
     color: #828fa3;
     text-align: start;
   }

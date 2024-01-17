@@ -1,0 +1,39 @@
+.dialog__header {
+  color: #ea5555;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.dialog__content {
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.4375rem;
+  color: #828fa3;
+}
+
+.confirmBtn {
+  color: #fff !important;
+  background-color: #ea5555 !important;
+  border-radius: 1.25rem !important;
+  width: 16.4375rem !important;
+  margin-bottom: 1rem !important;
+}
+.cancelBtn-light {
+  color: #635fc7 !important;
+  background-color: rgba(99, 95, 199, 0.1) !important;
+  border-radius: 1.25rem !important;
+  width: 16.4375rem !important;
+  margin-bottom: 1rem !important;
+  margin-left: 0 !important;
+}
+.cancelBtn-dark {
+  color: #635fc7 !important;
+  background-color: #fff !important;
+  border-radius: 1.25rem !important;
+  width: 16.4375rem !important;
+  margin-bottom: 1rem !important;
+  margin-left: 0 !important;
+}

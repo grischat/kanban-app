@@ -43,7 +43,7 @@ const createColumnsReducer = (state = initialState, action) => {
 
   if (action.type === "deleteBoard") {
     const selectedBoard = {
-      boardName: action.payload.boardName,
+      boardName: action.payload.boardName || "",
       columns: [...action.payload.columns],
     };
 
@@ -80,8 +80,8 @@ const createColumnsReducer = (state = initialState, action) => {
   }
   if (action.type === "selectBoard") {
     const selectedBoard = {
-      boardName: action.payload.boardName,
-      columns: [...action.payload.columns],
+      boardName: action.payload.boardName || "",
+      columns: [...action.payload.columns] || [],
     };
     return {
       ...state,
