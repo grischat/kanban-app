@@ -8,7 +8,7 @@ export default function Header() {
   const boardData = useSelector((state) => state.createColumnsReducer);
   const theme = useSelector((state) => state.switchThemeReducer.theme);
 
-  // Используйте опциональную цепочку (optional chaining) для безопасного доступа к свойствам объекта
+  
   const currentBoardName = boardData?.currentBoard?.boardName || "";
 
   return (

@@ -7,7 +7,7 @@ import "./App.scss";
 function App() {
   const theme = useSelector((state) => state.switchThemeReducer.theme);
   const currentBoard = useSelector((state) => state.createColumnsReducer.currentBoard);
-  const boardColumns = currentBoard?.columns; // Обратите внимание на использование опциональной цепочки (optional chaining)
+  const boardColumns = currentBoard?.columns; 
 
   const noColumns = boardColumns === null || boardColumns === undefined || boardColumns.length === 0;
 
