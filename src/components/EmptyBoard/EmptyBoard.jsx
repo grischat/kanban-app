@@ -1,10 +1,13 @@
 import { useSelector } from "react-redux";
 import "./EmptyBoard.scss";
-
-import CreateColumnModal from "../CreateColumnModal/CreateColumnModal";
+import BoardModal from "../BoardModal/BoardModal";
 
 export default function EmptyBoard() {
   const theme = useSelector((state) => state.switchThemeReducer.theme);
+  const boardName = useSelector(
+    (state) => state.createColumnsReducer.currentBoard.boardName
+  );
+  console.log(boardName);
   return (
     <div
       className="emptyBoard__container"
@@ -17,7 +20,16 @@ export default function EmptyBoard() {
       <h2 className="emptyBoard__text">
         This board is empty. Create a new <br /> column to get started.
       </h2>
-      <CreateColumnModal />
+      <div className="emptyBoard__button">
+        <BoardModal
+          mode="edit"
+          initialValues={{
+            boardName: boardName,
+            columns: [""],
+          }}
+        />
+        <p className="emptyBoard__btnText">+ Add New Column</p>
+      </div>
     </div>
   );
 }

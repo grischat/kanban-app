@@ -112,8 +112,9 @@
 // Shared button styles
 .btn-create,
 .btn-edit {
+  
   width: 10rem !important;
-
+  height: 2rem !important;
   .btn__text-create,
   .btn__text-edit {
     font-size: 0.8125rem;

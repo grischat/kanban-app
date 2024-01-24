@@ -18,6 +18,7 @@ export default function DropdownMenuBoards() {
     (state) => state.createColumnsReducer.allBoards
   );
   const theme = useSelector((state) => state.switchThemeReducer.theme);
+  
   const dispatch = useDispatch();
   const handleSelectedItem = (board) => {
     dispatch({
