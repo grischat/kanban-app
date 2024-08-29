@@ -1,0 +1,57 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "rules": {
+    // Clean Code Rules
+    "eqeqeq": ["error", "always"],
+    "curly": ["error", "all"],
+    "no-eval": "error",
+    "no-console": "warn",
+    "no-var": "error",
+    "prefer-const": "error",
+    "no-duplicate-imports": "error",
+    "no-unused-vars": "off", // Use TS specific rule instead
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/explicit-function-return-type": "warn",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/consistent-type-imports": "error",
+    
+    // Prettier Integration
+    "prettier/prettier": ["error", { "singleQuote": true, "trailingComma": "es5" }],
+
+    // Best Practices
+    "complexity": ["warn", 10],
+    "max-depth": ["warn", 4],
+    "max-lines": ["warn", { "max": 300, "skipBlankLines": true, "skipComments": true }],
+    "max-params": ["warn", 4],
+    "max-nested-callbacks": ["warn", 3],
+    "no-magic-numbers": ["warn", { "ignoreArrayIndexes": true, "enforceConst": true }],
+    "no-useless-constructor": "error",
+    "consistent-return": "error",
+    "default-case": "warn",
+    "no-else-return": ["error", { "allowElseIf": false }],
+
+    
+    "@typescript-eslint/no-non-null-assertion": "warn",
+    "@typescript-eslint/no-floating-promises": "error",
+    "@typescript-eslint/prefer-nullish-coalescing": "warn",
+    "@typescript-eslint/strict-boolean-expressions": "warn"
+  }
+}
