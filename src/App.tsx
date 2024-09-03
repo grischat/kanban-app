@@ -8,7 +8,7 @@ type RootState = {
     switchThemeReducer: {
         theme: string;
     };
-    createColumnsReducer: {
+    boardsColumnsReducer: {
         currentBoard: {
             columns?: Array<unknown>;
         };
@@ -20,7 +20,7 @@ const App: React.FC = () => {
         (state: RootState) => state.switchThemeReducer.theme
     );
     const currentBoard = useSelector(
-        (state: RootState) => state.createColumnsReducer.currentBoard
+        (state: RootState) => state.boardsColumnsReducer.currentBoard
     );
     const boardColumns = currentBoard?.columns;
 
@@ -31,7 +31,7 @@ const App: React.FC = () => {
 
     return (
         <div className={`app__container-${theme}`}>
-            <Header/>
+            <Header />
 
             {noColumns ? <EmptyBoard /> : <KanbanBoard />}
         </div>

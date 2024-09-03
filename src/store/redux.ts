@@ -1,14 +1,40 @@
 import { createStore, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
+import { type Board } from '../components/SharedTypes/SharedTypes';
 import storage from 'redux-persist/lib/storage';
+
+type State = { currentBoard: Board<string>; allBoards: Board<string>[] };
+
+type AddBoardAction = { type: 'addBoard'; payload: Board<string> };
+type EditBoardAction = { type: 'editBoard'; payload: Board<string> };
+type DeleteBoardAction = { type: 'deleteBoard'; payload: Board<string> };
+type AddColumnAction = { type: 'addColumn'; payload: { columns: string[] } };
+type SelectBoardAction = { type: 'selectBoard'; payload: Board<string> };
+
+type ActionBoard =
+    | AddBoardAction
+    | EditBoardAction
+    | DeleteBoardAction
+    | SelectBoardAction;
+
+type ActionColumn = AddColumnAction;
+
+type ActionTheme = {
+    type: 'switchTheme';
+    payload: { theme: string; toggled: boolean };
+};
+
 const initialState = {
-    currentBoard: { boardName: 'Dummy', columns: null },
+    currentBoard: { boardName: 'Dummy', columns: [] },
     allBoards: [],
 };
 
-const createColumnsReducer = (state = initialState, action) => {
+const boardsColumnsReducer = (
+    state: State = initialState,
+    action: ActionBoard | ActionColumn
+) => {
     if (action.type === 'addBoard') {
-        const newBoard = {
+        const newBoard: Board<string> = {
             boardName: action.payload.boardName,
             columns: [...action.payload.columns],
         };
@@ -21,7 +47,7 @@ const createColumnsReducer = (state = initialState, action) => {
     }
 
     if (action.type === 'editBoard') {
-        const editedCurrentBoard = {
+        const editedCurrentBoard: Board<string> = {
             boardName: action.payload.boardName,
             columns: [...action.payload.columns],
         };
@@ -102,7 +128,7 @@ const createColumnsReducer = (state = initialState, action) => {
 
 const switchThemeReducer = (
     state = { theme: 'light', toggled: false },
-    action
+    action: ActionTheme
 ) => {
     if (action.type === 'switchTheme') {
         return {
@@ -118,7 +144,7 @@ const persistConfig = {
     storage,
 };
 const rootReducer = combineReducers({
-    createColumnsReducer,
+    boardsColumnsReducer,
     switchThemeReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);

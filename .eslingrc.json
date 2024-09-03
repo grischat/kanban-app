@@ -18,7 +18,6 @@
     "prettier"
   ],
   "rules": {
-    // Clean Code Rules
     "eqeqeq": ["error", "always"],
     "curly": ["error", "all"],
     "no-eval": "error",
@@ -26,17 +25,16 @@
     "no-var": "error",
     "prefer-const": "error",
     "no-duplicate-imports": "error",
-    "no-unused-vars": "off", // Use TS specific rule instead
+    "no-unused-vars": "off", 
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "@typescript-eslint/explicit-function-return-type": "warn",
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/consistent-type-imports": "error",
     
-    // Prettier Integration
+    
     "prettier/prettier": ["error", { "singleQuote": true, "trailingComma": "es5" }],
 
-    // Best Practices
     "complexity": ["warn", 10],
     "max-depth": ["warn", 4],
     "max-lines": ["warn", { "max": 300, "skipBlankLines": true, "skipComments": true }],
